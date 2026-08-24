@@ -1,0 +1,7 @@
+---
+description: <Mesma descrição usada em .claude/agents/<papel>.md — deve ser idêntica entre as ferramentas.>
+globs: ["<caminho-real-1>/**/*.<ext>", "<caminho-real-2>/**/*.<ext>"]
+alwaysApply: false
+---
+
+<Corpo idêntico ao de `.claude/agents/<papel>.md` (tudo depois do frontmatter) — copie de lá, não escreva do zero. Só o frontmatter muda entre as ferramentas; o conteúdo é a mesma fonte de verdade textual.>

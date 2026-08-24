@@ -1,0 +1,5 @@
+name = "<nome-do-papel>"
+description = "<Mesma descrição usada em .claude/agents/<papel>.md — deve ser idêntica entre as ferramentas.>"
+developer_instructions = """
+<Corpo idêntico ao de `.claude/agents/<papel>.md` (tudo depois do frontmatter) — copie de lá, não escreva do zero. Preserve Markdown dentro da string TOML (crases para código, listas, negrito) — o Codex renderiza o mesmo Markdown.>
+"""

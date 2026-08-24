@@ -1,0 +1,14 @@
+{
+  "name": "victor-bootstrap",
+  "owner": {
+    "name": "Victor Sena"
+  },
+  "description": "Marketplace pessoal de Victor Sena para plugins de arquitetura de agentes de IA (Claude Code/Cursor/Codex).",
+  "plugins": [
+    {
+      "name": "bootstrap-agent-architecture",
+      "source": "./plugin",
+      "description": "Orquestrador de arquitetura de agentes de IA (Claude Code/Cursor/Codex): bootstrap-init, bootstrap-add-role e bootstrap-audit."
+    }
+  ]
+}

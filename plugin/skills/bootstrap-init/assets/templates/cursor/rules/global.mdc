@@ -1,0 +1,19 @@
+---
+description: Regras globais de <NOME_DO_PROJETO>, válidas para qualquer alteração no repositório.
+globs:
+alwaysApply: true
+---
+
+Regras globais de <NOME_DO_PROJETO> (<stack resumida>):
+
+- <Regra 1>
+- <Regra 2>
+- <Regra 3>
+- Contratos públicos (endpoints, DTOs/schemas) não mudam silenciosamente.
+
+Antes de alterar código, leia `.agents/context/CONTEXT.md` e a task ativa em `.agents/tasks/active/`, se houver.
+
+Comandos de validação:
+```bash
+<comando de build/test real>
+```
