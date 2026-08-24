@@ -1,0 +1,30 @@
+# ---- Arquitetura de IA/Agentes — ver GUIA.md seção 6 antes de usar este snippet ----
+# Decida primeiro (GUIA.md seção 3) se tasks/handoffs/ADRs e a pasta docs/ de
+# arquitetura vão ou não para o Git. As linhas abaixo assumem que TUDO fica
+# local (a escolha feita no GeoCloudAI). Se você decidiu diferente, remova a(s)
+# linha(s) correspondente(s).
+
+# Adaptadores de ferramentas de IA
+.claude/
+.cursor/
+.codex/
+.agents/
+
+# Roteadores de IA (locais, não versionados)
+CLAUDE.md
+AGENTS.md
+PLANS.md
+
+# Estrutura de documentação de arquitetura (local, não versionada)
+# Remova esta linha se você decidiu versionar docs/ normalmente.
+docs/
+
+# ---- Sempre ignorar, independente da decisão acima ----
+.env*
+!.env.example
+secrets/**
+credentials/**
+*.pem
+*.key
+backups/**
+dumps/**
