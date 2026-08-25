@@ -5,6 +5,12 @@ Responsabilidade, localização, dependências e invariantes por módulo funcion
 ## Template por módulo
 
 ```markdown
+---
+estado: <planejado | real | divergente>
+fonte: <caminho do código do módulo>
+ultima-revisao: <task ou data>
+---
+
 # Módulo <Nome>
 
 ## Responsabilidade

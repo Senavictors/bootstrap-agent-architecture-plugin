@@ -1,3 +1,9 @@
+---
+estado: <planejado | real | divergente>
+fonte: <arquivos de configuração/bootstrap/deploy reais que sustentam este doc, ou a spec de origem>
+ultima-revisao: <task ou data>
+---
+
 # Dependências
 
 Direção estrita de dependência entre camadas/containers.

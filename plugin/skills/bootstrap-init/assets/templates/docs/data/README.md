@@ -9,4 +9,6 @@ Schemas, tipos, nulabilidade, propriedade, retenção e classificação de dados
 
 Migrations reais ficam no código (ex.: `<pasta-de-migrations>`) — este diretório é só documentação de apoio, não substitui o código.
 
+Cada arquivo criado aqui segue a convenção de frontmatter de estado do [`../README.md`](../README.md) (`estado`/`fonte`/`ultima-revisao`).
+
 _(preencher conforme o conteúdo real for escrito)_

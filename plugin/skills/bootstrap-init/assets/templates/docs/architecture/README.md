@@ -12,4 +12,4 @@ Visão estrutural de <NOME_DO_PROJETO>: contexto do sistema, containers, compone
 
 Diagramas visuais complementares (Mermaid/PlantUML): [`../diagrams/`](../diagrams/README.md).
 
-**Importante**: escreva estes documentos a partir do código de configuração real (arquivos de deploy, scripts de start, código de bootstrap), nunca do que "deveria ser". Se encontrar divergência entre um diagrama/documento antigo e o comportamento real, registre a divergência explicitamente em vez de escolher um dos dois silenciosamente.
+**Importante**: num projeto com código, escreva estes documentos a partir do código de configuração real (arquivos de deploy, scripts de start, código de bootstrap), nunca do que "deveria ser" — e marque `estado: real` no frontmatter. Num projeto ainda sem código (greenfield), documente a arquitetura planejada a partir da especificação disponível, marcando `estado: planejado` — nunca apresente o planejado como se já existisse. Se encontrar divergência entre um diagrama/documento antigo e o comportamento real, marque `estado: divergente` e registre a divergência explicitamente em vez de escolher um dos dois silenciosamente.
