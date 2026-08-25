@@ -5,6 +5,12 @@ Credenciais, limites, retry, timeout, idempotência, circuit breaker e procedime
 ## Template por integração
 
 ```markdown
+---
+estado: <planejado | real | divergente>
+fonte: <código real que implementa esta integração>
+ultima-revisao: <task ou data>
+---
+
 # Integração <Nome>
 
 ## Propósito

@@ -1,4 +1,4 @@
-# bootstrap-agent-architecture (v2.2.0 — completo, Fases 1 a 4)
+# bootstrap-agent-architecture (v2.3.0 — Fases 1 a 4 + documentação viva)
 
 Plugin do Claude Code com oito skills:
 
@@ -22,6 +22,15 @@ Plugin do Claude Code com oito skills:
 **Fase 4** — `bootstrap-add-role` agora pergunta sobre MCP para papéis de risco (banco/infra), com fallback automático para `Bash` + veto-list quando não há MCP disponível; `bootstrap-quarantine` automatiza a geração do relatório de aderência de skills externas (a ativação continua exigindo aprovação humana, por design); `bootstrap-install-hook` instala o guardrail anti-vazamento como hook de `pre-commit` real — **testado de ponta a ponta nesta sessão** num repositório git descartável: bloqueou uma chave AWS e um `STRIPE_SECRET_KEY` colado por engano, deixou passar um commit limpo (incluindo código que só menciona as palavras "secret"/"token" sem atribuir valor, para confirmar que não há falso positivo óbvio), e confirmou que `--no-verify` continua pulando o hook (comportamento esperado do Git, documentado para o usuário).
 
 **Fase 3** foi absorvida pela Fase 1 (roteamento de modelo/`memory`/`skills` já estava em `bootstrap-add-role` desde o início) — não sobrou item específico para implementar à parte.
+
+**v2.3.0 — documentação viva.** A pasta `docs/` deixou de ser um retrato do dia 1 e passou a ser mantida pelo ciclo de vida das tasks:
+
+- **Frontmatter de estado em todo doc** (`estado: planejado | real | divergente`, `fonte`, `ultima-revisao`) — legitima documentar projetos ainda sem código (greenfield, `planejado`) e formaliza divergências (`divergente`) em vez de correções silenciosas.
+- **`bootstrap-init` preenche o núcleo inteiro de `docs/`** (não só `architecture/`): visão geral real em cada subpasta (`domain/`, `modules/`, `api/`, `data/`, `integrations/`, `diagrams/`); arquivos por módulo/endpoint nascem sob demanda, não no bootstrap.
+- **Extensões opcionais detectadas e sugeridas** (`ai/`, `product/`, `ui/`, `quality/`, `security/`, `roadmap/`) — criadas só com confirmação do usuário e sempre declaradas no mapa do `docs/README.md`.
+- **`bootstrap-complete` fecha o ciclo**: o DoD passou a exigir que a doc da área tocada pela task seja atualizada (carimbo de `ultima-revisao`, flip `planejado → real`, ou marcação `divergente`).
+- **`bootstrap-audit` vigia a defasagem**: checa o frontmatter, lista os `divergente` pendentes e sinaliza docs `real` cuja `fonte` mudou no Git depois da última revisão.
+- **Governança de `docs/`**: tabela de fontes primárias (nunca duplicar doc externa existente), nenhum arquivo solto na raiz de `docs/`, e diagramas com `status`/`fonte` declarados + índice obrigatório em catálogos grandes.
 
 ## Limitações que continuam valendo (documentadas nas próprias skills)
 

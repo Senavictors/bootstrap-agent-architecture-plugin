@@ -1,3 +1,9 @@
+---
+estado: <planejado | real | divergente>
+fonte: <arquivos de configuração/bootstrap/deploy reais que sustentam este doc, ou a spec de origem>
+ultima-revisao: <task ou data>
+---
+
 # Implantação
 
 Ambiente: <plataforma real — ex.: Replit, AWS, Docker Compose, etc.>. Escreva este documento a partir da configuração de deploy real (arquivos de config, scripts de start, variáveis de ambiente lidas no código) — nunca do que "deveria ser".
