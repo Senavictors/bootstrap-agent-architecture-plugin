@@ -9,7 +9,7 @@
 
 ## 🇧🇷 Português
 
-Marketplace pessoal do Claude Code contendo um único plugin: **`bootstrap-agent-architecture`** (v2.2.0 — roadmap de evolução completo, Fases 1 a 4).
+Marketplace pessoal do Claude Code contendo um único plugin: **`bootstrap-agent-architecture`** (v2.3.0 — Fases 1 a 4 + documentação viva).
 
 O plugin ajuda a bootstrapar e manter uma arquitetura de agentes de IA (Claude Code, Cursor, Codex) em qualquer projeto: inicialização, papéis especializados, ciclo de vida de tasks, auditoria local e um guardrail anti-vazamento de segredos.
 
@@ -97,7 +97,7 @@ Pelo terminal:
 
 ### ✅ Escopo desta entrega
 
-Esta versão (v2.2.0) entrega o roadmap **completo, Fases 1 a 4** (ver `Bootstrap-Agent-Architecture-v2-Final.md/pdf` para a especificação completa). O `plugin/README.md` lista exatamente o que está incluído em cada fase, o que foi testado e as limitações que continuam valendo.
+Esta versão (v2.3.0) entrega o roadmap **completo, Fases 1 a 4**, mais a **documentação viva** (docs/ com estado planejado/real/divergente, atualizada a cada task). Ver `Bootstrap-Agent-Architecture-v2-Final.md/pdf` para a especificação completa. O `plugin/README.md` lista exatamente o que está incluído em cada fase, o que foi testado e as limitações que continuam valendo.
 
 ### 📄 Licença
 
@@ -107,7 +107,7 @@ Distribuído sob a licença [MIT](./LICENSE) — livre para usar, modificar e re
 
 ## 🇺🇸 English
 
-Personal Claude Code marketplace containing a single plugin: **`bootstrap-agent-architecture`** (v2.2.0 — full roadmap, Phases 1 through 4).
+Personal Claude Code marketplace containing a single plugin: **`bootstrap-agent-architecture`** (v2.3.0 — Phases 1 through 4 + living documentation).
 
 The plugin helps you bootstrap and maintain an AI agent architecture (Claude Code, Cursor, Codex) in any project: project initialization, specialized roles, task lifecycle, local auditing, and a secrets anti-leak guardrail.
 
@@ -195,7 +195,7 @@ Through the terminal:
 
 ### ✅ Scope of this release
 
-This version (v2.2.0) delivers the **complete roadmap, Phases 1 through 4** (see `Bootstrap-Agent-Architecture-v2-Final.md/pdf` for the full spec). `plugin/README.md` lists exactly what's included in each phase, what was tested, and the limitations that still apply.
+This version (v2.3.0) delivers the **complete roadmap, Phases 1 through 4**, plus **living documentation** (docs/ with planned/real/divergent state, updated on every task). See `Bootstrap-Agent-Architecture-v2-Final.md/pdf` for the full spec. `plugin/README.md` lists exactly what's included in each phase, what was tested, and the limitations that still apply.
 
 ### 📄 License
 

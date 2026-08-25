@@ -48,11 +48,28 @@ Não existe número fixo — tipicamente 3 a 6. Decida observando o código real
 
 Para cada papel identificado, **execute o procedimento completo descrito na skill `bootstrap-add-role`** (leia `../bootstrap-add-role/SKILL.md` se precisar relembrar o passo a passo) — não reescreva essa lógica aqui. Isso garante que um papel criado durante o bootstrap inicial e um papel adicionado depois, num projeto já maduro, sigam exatamente o mesmo processo e o mesmo formato.
 
-## Passo 7 — Montar `docs/architecture/` (se decidido no passo 2)
+## Passo 7 — Montar `docs/` (se decidido no passo 2)
 
-Antes de escrever, procure documentação/diagramas de arquitetura já existentes no projeto — reaproveite, não duplique. Copie `assets/templates/docs/` e preencha `architecture/{context,containers,components,dependencies,deployment}.md` a partir do **código real** de configuração/bootstrap/deploy — nunca do que "deveria ser". Divergências entre um diagrama antigo e o comportamento real do código são registradas explicitamente, nunca corrigidas ou ignoradas silenciosamente.
+Antes de escrever, procure documentação/diagramas já existentes no projeto — reaproveite, não duplique. Se o projeto já tem uma pasta `docs/` de produto pré-existente e versionada, não a duplique nem mova — crie a nova estrutura ao lado dela, e registre no `docs/README.md` novo a tabela de **Fontes primárias** apontando quem é dono de cada assunto (a doc externa é a fonte; `docs/` só complementa).
 
-Se o projeto já tem uma pasta `docs/` de produto pré-existente e versionada, não a duplique nem mova — crie a nova estrutura ao lado dela.
+Copie `assets/templates/docs/` e preencha assim:
+
+**7a — Núcleo, visão geral primeiro (nunca exaustivo no bootstrap).** Preencha o `README.md` de **cada** subpasta do núcleo (`architecture/`, `domain/`, `modules/`, `api/`, `data/`, `integrations/`, `diagrams/`) com uma visão geral real do projeto — nada de placeholder genérico sobrando. Em `architecture/`, preencha também os cinco documentos (`context`, `containers`, `components`, `dependencies`, `deployment`). Os arquivos individuais por módulo/endpoint/integração **não** são criados no bootstrap: eles nascem sob demanda, quando uma task tocar aquela área (`bootstrap-plan`/`bootstrap-complete`).
+
+**7b — Estado de cada documento (frontmatter).** Todo documento criado (exceto READMEs de índice) recebe o frontmatter `estado`/`fonte`/`ultima-revisao` descrito no template de `docs/README.md`:
+- Projeto **com código**: escreva a partir do código real de configuração/bootstrap/deploy — nunca do que "deveria ser" — e marque `estado: real`, com `fonte` apontando os arquivos que sustentam o doc.
+- Projeto **ainda sem código (greenfield)**: documente a arquitetura planejada a partir da especificação disponível e marque `estado: planejado` — nunca apresente o planejado como se já existisse. Conforme as tasks implementarem, `bootstrap-complete` vira o estado para `real`.
+- Divergência entre doc/diagrama antigo e o comportamento real do código: marque `estado: divergente` e registre a divergência explicitamente, nunca corrija ou ignore silenciosamente.
+
+**7c — Extensões opcionais: detecte e sugira, nunca crie por padrão.** Observe o projeto real e **sugira** ao usuário as extensões de `docs/` que se aplicam — crie somente as que ele confirmar:
+- Funcionalidade de IA no produto (chamadas a APIs de LLM, prompts no código) → sugira `ai/` (avaliação, segurança e limites dessa funcionalidade).
+- Projeto pré-desenvolvimento / orientado a produto (spec extensa, pouco ou nenhum código) → sugira `product/` (visão, contrato do MVP, fluxos de UX) e `roadmap/`.
+- Front-end com design system ou biblioteca de componentes própria → sugira `ui/`.
+- Sinais de exigência de qualidade/segurança formal (suíte de testes robusta, requisitos não funcionais declarados, dados sensíveis) → sugira `quality/` e/ou `security/`.
+
+Cada extensão criada entra **declarada na lista de extensões do `docs/README.md`** — nenhuma pasta surge em `docs/` fora do mapa. As linhas de exemplo não usadas são apagadas.
+
+**7d — Nada solto na raiz.** Nenhum arquivo é criado solto na raiz de `docs/` além do `README.md`. Se o projeto já tinha documentos soltos ali, catalogue-os e linke-os no `README.md` — não os mova sem aprovação.
 
 ## Passo 8 — Verificar e reportar
 

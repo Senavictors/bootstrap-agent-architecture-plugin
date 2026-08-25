@@ -1,3 +1,9 @@
+---
+estado: <planejado | real | divergente>
+fonte: <arquivos de configuração/bootstrap/deploy reais que sustentam este doc, ou a spec de origem>
+ultima-revisao: <task ou data>
+---
+
 # Containers
 
 Processos/serviços implantáveis de forma independente (sentido C4), mais serviços externos consumidos. Topologia de implantação real (portas, proxy) fica em [deployment.md](deployment.md); aqui o foco é responsabilidade e forma de comunicação.
