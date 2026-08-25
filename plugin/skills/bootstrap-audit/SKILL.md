@@ -23,6 +23,7 @@ Varra mecanicamente (Grep/leitura direta, sem exigir ferramenta nova):
 - Todo arquivo em `.codex/agents/*.toml` tem `description` preenchida?
 - Para cada papel que existe nos três adaptadores, o conteúdo (corpo, não frontmatter) é idêntico entre eles? Sinalize qualquer divergência de texto encontrada — isso é o único "bug estrutural" que esta arquitetura pode ter por não ter sincronização automática.
 - Algum link relativo dentro de `.agents/**/*.md` ou `docs/**/*.md` aponta para um arquivo que não existe?
+- **Docs viva** (se o projeto tem `docs/` desta arquitetura): todo doc de `docs/` fora os READMEs de índice tem o frontmatter `estado`/`fonte`/`ultima-revisao` preenchido? Liste os docs marcados `estado: divergente` (são pendências abertas, não erros — mas não podem ficar esquecidos). Para docs `estado: real`, quando for barato verificar (ex.: `git log -1 --format=%ci -- <fonte>`), sinalize como **suspeito de defasagem** qualquer doc cuja `fonte` mudou no Git depois da `ultima-revisao` — apenas sinalize; quem atualiza é uma task via `bootstrap-complete`, não esta auditoria.
 
 Para achados triviais e reversíveis (ex.: `description` ausente), **pergunte antes de corrigir**: "Encontrei `<arquivo>` sem `description`. Posso preencher com `<sugestão>`?" — nunca aplique a correção sem confirmação, mesmo sendo um achado de baixo risco.
 

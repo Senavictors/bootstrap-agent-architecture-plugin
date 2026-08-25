@@ -5,6 +5,12 @@ Contratos, autenticação/autorização, versionamento, erros, paginação, idem
 ## Template por endpoint
 
 ```markdown
+---
+estado: <planejado | real | divergente>
+fonte: <controller/handler real que implementa este endpoint>
+ultima-revisao: <task ou data>
+---
+
 # METODO /rota
 
 ## Propósito
