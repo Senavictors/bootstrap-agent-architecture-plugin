@@ -99,6 +99,10 @@ Pelo terminal:
 
 Esta versão (v2.2.0) entrega o roadmap **completo, Fases 1 a 4** (ver `Bootstrap-Agent-Architecture-v2-Final.md/pdf` para a especificação completa). O `plugin/README.md` lista exatamente o que está incluído em cada fase, o que foi testado e as limitações que continuam valendo.
 
+### 📄 Licença
+
+Distribuído sob a licença [MIT](./LICENSE) — livre para usar, modificar e redistribuir, inclusive comercialmente.
+
 ---
 
 ## 🇺🇸 English
@@ -192,3 +196,7 @@ Through the terminal:
 ### ✅ Scope of this release
 
 This version (v2.2.0) delivers the **complete roadmap, Phases 1 through 4** (see `Bootstrap-Agent-Architecture-v2-Final.md/pdf` for the full spec). `plugin/README.md` lists exactly what's included in each phase, what was tested, and the limitations that still apply.
+
+### 📄 License
+
+Distributed under the [MIT License](./LICENSE) — free to use, modify, and redistribute, including commercially.
