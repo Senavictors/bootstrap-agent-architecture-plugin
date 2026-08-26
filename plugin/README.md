@@ -1,6 +1,6 @@
-# bootstrap-agent-architecture (v2.2.0 — completo, Fases 1 a 4)
+# bootstrap-agent-architecture (v2.2.0 — Claude Code e Codex)
 
-Plugin do Claude Code com oito skills:
+Plugin universal de skills para Claude Code e Codex, com oito skills:
 
 | Skill | Comando | O que faz | Fase |
 |---|---|---|---|
@@ -32,6 +32,8 @@ Plugin do Claude Code com oito skills:
 
 ## Instalação local
 
+### Claude Code
+
 ```bash
 /plugin marketplace add /caminho/absoluto/para/bootstrap-agent-architecture-plugin
 /plugin install bootstrap-agent-architecture@victor-bootstrap
@@ -51,3 +53,21 @@ Para testar sem instalar (desenvolvimento):
 ```bash
 claude --plugin-dir /caminho/absoluto/para/bootstrap-agent-architecture-plugin/plugin
 ```
+
+### Codex
+
+O pacote inclui o manifesto do Codex em `.codex-plugin/plugin.json` e reutiliza diretamente as
+skills em `skills/`. O marketplace raiz (`.claude-plugin/marketplace.json`) também é compatível
+com o Codex. A partir da raiz do repositório, configure e instale assim:
+
+```bash
+codex plugin marketplace add C:\caminho\absoluto\para\bootstrap-agent-architecture-plugin
+codex plugin add bootstrap-agent-architecture@victor-bootstrap
+```
+
+No Codex desktop, a instalação também pode ser feita pela aba de plugins; no Codex CLI, abra o
+navegador com `/plugins`. Inicie uma nova sessão depois da instalação.
+
+O formato de plugin do Codex não usa os comandos slash do Claude. As mesmas skills ficam
+disponíveis como capacidades do Codex quando o fluxo descrito na respectiva `SKILL.md` for
+solicitado.

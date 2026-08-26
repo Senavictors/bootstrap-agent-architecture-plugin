@@ -1,0 +1,6 @@
+{
+  "name": "bootstrap-agent-architecture",
+  "version": "2.2.0",
+  "description": "Orquestrador de arquitetura de agentes de IA para Claude Code, Cursor e Codex — bootstrap de projeto, papéis especializados, planejamento, handoff, auditoria e guardrails.",
+  "skills": "./skills/"
+}

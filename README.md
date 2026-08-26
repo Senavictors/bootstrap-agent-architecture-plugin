@@ -1,6 +1,6 @@
-# Marketplace pessoal — bootstrap-agent-architecture
+# Marketplace local — bootstrap-agent-architecture
 
-Este diretório é um marketplace local do Claude Code contendo um único plugin: `bootstrap-agent-architecture` (v2.2.0, roadmap de evolução completo — Fases 1 a 4).
+Este diretório contém um plugin universal de skills para Claude Code e Codex: `bootstrap-agent-architecture` (v2.2.0, roadmap de evolução completo — Fases 1 a 4).
 
 ```text
 bootstrap-agent-architecture-plugin/
@@ -9,7 +9,9 @@ bootstrap-agent-architecture-plugin/
 ├── README.md                    # este arquivo
 └── plugin/
     ├── .claude-plugin/
-    │   └── plugin.json          # manifesto do plugin
+    │   ├── plugin.json          # manifesto do plugin para Claude Code
+    ├── .codex-plugin/
+    │   └── plugin.json          # manifesto do plugin para Codex/ChatGPT
     ├── README.md                 # detalhe de instalação + o que está/não está nesta versão
     └── skills/
         ├── bootstrap-init/
@@ -46,6 +48,24 @@ Ou, se o marketplace estiver hospedado num repositório Git (GitHub, por exemplo
 
 Depois de instalar, rode `/reload-plugins` se os comandos não aparecerem de imediato.
 
+### Codex
+
+O mesmo pacote também contém o manifesto universal do Codex em `plugin/.codex-plugin/plugin.json`.
+As oito skills são compartilhadas; não há uma segunda cópia do conteúdo. O marketplace existente
+em `.claude-plugin/marketplace.json` também pode ser usado pelo Codex como marketplace local
+compatível. A partir da raiz deste repositório:
+
+```bash
+codex plugin marketplace add C:\caminho\absoluto\para\bootstrap-agent-architecture-plugin
+codex plugin add bootstrap-agent-architecture@victor-bootstrap
+```
+
+No Codex desktop, também é possível instalar pela aba de plugins; no Codex CLI, abra o navegador
+com `/plugins`. Depois da instalação, inicie uma nova sessão para carregar as skills.
+
+O Codex no aplicativo desktop e o Codex CLI oferecem suporte a plugins; a extensão de IDE não
+oferece suporte a plugins neste momento.
+
 Este fluxo (`claude plugin marketplace add` + `claude plugin install`, equivalentes de linha de comando dos comandos `/plugin` acima) foi testado de ponta a ponta nesta sessão, num ambiente isolado, antes de cada entrega — `claude plugin validate` passou sem avisos para o plugin e para o marketplace, e `claude plugin list`/`claude plugin details` confirmaram todas as skills instaladas e habilitadas:
 
 ```text
@@ -63,7 +83,8 @@ Além da instalação, `bootstrap-install-hook` foi testado de verdade nesta ses
 
 ## Atualizar depois
 
-Edite os arquivos dentro de `plugin/`, suba a `version` em `plugin/.claude-plugin/plugin.json`, e rode `/plugin marketplace update` seguido de `/plugin update bootstrap-agent-architecture@victor-bootstrap` na sua sessão do Claude Code.
+Edite os arquivos dentro de `plugin/`, suba a versão nos dois manifestos (`plugin/.claude-plugin/plugin.json`
+e `plugin/.codex-plugin/plugin.json`) e atualize o marketplace correspondente antes de reinstalar.
 
 ## Escopo desta entrega
 
