@@ -9,7 +9,7 @@
 
 ## 🇧🇷 Português
 
-Marketplace pessoal do Claude Code contendo um único plugin: **`bootstrap-agent-architecture`** (v2.3.0 — Fases 1 a 4 + documentação viva).
+Marketplace local do Claude Code e Codex contendo um único plugin: **`bootstrap-agent-architecture`** (v2.3.0 — Fases 1 a 4 + documentação viva).
 
 O plugin ajuda a bootstrapar e manter uma arquitetura de agentes de IA (Claude Code, Cursor, Codex) em qualquer projeto: inicialização, papéis especializados, ciclo de vida de tasks, auditoria local e um guardrail anti-vazamento de segredos.
 
@@ -23,7 +23,9 @@ bootstrap-agent-architecture-plugin/
 ├── README.md                    # este arquivo
 └── plugin/
     ├── .claude-plugin/
-    │   └── plugin.json          # manifesto do plugin
+    │   └── plugin.json          # manifesto do plugin para Claude Code
+    ├── .codex-plugin/
+    │   └── plugin.json          # manifesto do plugin para Codex/ChatGPT
     ├── README.md                 # detalhe de instalação + o que está/não está nesta versão
     └── skills/
         ├── bootstrap-init/          # Fase 1
@@ -69,6 +71,24 @@ Ou, se preferir usar uma cópia local do repositório, use o **caminho absoluto*
 ```
 
 Depois de instalar, rode `/reload-plugins` se os comandos não aparecerem de imediato.
+
+### Codex
+
+O mesmo pacote também contém o manifesto universal do Codex em `plugin/.codex-plugin/plugin.json`.
+As oito skills são compartilhadas; não há uma segunda cópia do conteúdo. O marketplace existente
+em `.claude-plugin/marketplace.json` também pode ser usado pelo Codex como marketplace local
+compatível. A partir da raiz deste repositório:
+
+```bash
+codex plugin marketplace add C:\caminho\absoluto\para\bootstrap-agent-architecture-plugin
+codex plugin add bootstrap-agent-architecture@victor-bootstrap
+```
+
+No Codex desktop, também é possível instalar pela aba de plugins; no Codex CLI, abra o navegador
+com `/plugins`. Depois da instalação, inicie uma nova sessão para carregar as skills.
+
+O Codex no aplicativo desktop e o Codex CLI oferecem suporte a plugins; a extensão de IDE não
+oferece suporte a plugins neste momento.
 
 ### 🛠️ Skills incluídas
 
@@ -143,7 +163,7 @@ Distribuído sob a licença [MIT](./LICENSE) — livre para usar, modificar e re
 
 ## 🇺🇸 English
 
-Personal Claude Code marketplace containing a single plugin: **`bootstrap-agent-architecture`** (v2.3.0 — Phases 1 through 4 + living documentation).
+Local Claude Code and Codex marketplace containing a single plugin: **`bootstrap-agent-architecture`** (v2.3.0 — Phases 1 through 4 + living documentation).
 
 The plugin helps you bootstrap and maintain an AI agent architecture (Claude Code, Cursor, Codex) in any project: project initialization, specialized roles, task lifecycle, local auditing, and a secrets anti-leak guardrail.
 
@@ -158,6 +178,8 @@ bootstrap-agent-architecture-plugin/
 └── plugin/
     ├── .claude-plugin/
     │   └── plugin.json          # plugin manifest
+    ├── .codex-plugin/
+    │   └── plugin.json          # Codex/ChatGPT plugin manifest
     ├── README.md                 # install details + what is/isn't in this version
     └── skills/
         ├── bootstrap-init/          # Phase 1
