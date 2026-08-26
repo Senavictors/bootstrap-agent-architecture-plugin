@@ -1,9 +1,22 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
   "name": "bootstrap-agent-architecture",
   "description": "Orquestrador de arquitetura de agentes de IA para Claude Code, Cursor e Codex — bootstrap de projeto, papéis especializados (com MCP opcional para operações de risco), planejamento e geração de tasks, handoff entre sessões/ferramentas, checagem de Definition of Done com documentação viva (docs/ com estado planejado/real/divergente, atualizada a cada task), auditoria local, triagem assistida de skills externas, e guardrail anti-vazamento como hook de pre-commit real (opcional).",
   "version": "2.3.0",
   "author": {
     "name": "Victor Sena"
   },
-  "homepage": "https://github.com/victor-sena/bootstrap-agent-architecture"
+  "homepage": "https://github.com/Senavictors/bootstrap-agent-architecture-plugin",
+  "repository": "https://github.com/Senavictors/bootstrap-agent-architecture-plugin",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "architecture",
+    "adr",
+    "documentation",
+    "governance",
+    "claude-code",
+    "cursor",
+    "codex"
+  ]
 }
