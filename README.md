@@ -19,6 +19,7 @@ O plugin ajuda a bootstrapar e manter uma arquitetura de agentes de IA (Claude C
 bootstrap-agent-architecture-plugin/
 ├── .claude-plugin/
 │   └── marketplace.json        # catálogo do marketplace, aponta para ./plugin
+├── CHANGELOG.md                 # histórico de versões
 ├── README.md                    # este arquivo
 └── plugin/
     ├── .claude-plugin/
@@ -86,14 +87,49 @@ Veja `plugin/README.md` para o detalhe completo de cada fase e as limitações c
 
 ### 🔄 Atualizar depois
 
-Pela interface: volte em **Configurações → Plugins**, atualize o marketplace e reinstale/atualize o plugin quando uma nova versão for publicada.
-
-Pelo terminal:
+Pelo terminal, na ordem — o primeiro comando é o que resolve 90% dos casos:
 
 ```bash
 /plugin marketplace update victor-bootstrap
 /plugin update bootstrap-agent-architecture@victor-bootstrap
 ```
+
+Pela interface: **Configurações → Plugins → Navegar** → atualize (sincronize) o
+marketplace `victor-bootstrap` e só então volte na página do plugin.
+
+#### 🩺 "Subi a versão nova no GitHub e o botão *Atualizar* continua desligado"
+
+Isso é cache do cliente, não um problema do repositório. O Claude Code guarda
+**duas** cópias locais:
+
+| O que | Onde | Quem atualiza |
+|---|---|---|
+| Clone do marketplace (o catálogo) | `~/.claude/plugins/marketplaces/victor-bootstrap/` | `/plugin marketplace update victor-bootstrap` |
+| Cópia instalada do plugin | `~/.claude/plugins/cache/victor-bootstrap/bootstrap-agent-architecture/<versão>/` | `/plugin update bootstrap-agent-architecture@victor-bootstrap` |
+
+O botão **Atualizar** compara a versão instalada com a versão do **clone do
+catálogo** — nunca direto com o GitHub. Enquanto esse clone estiver em `2.2.0`,
+não existe atualização para oferecer e o botão fica desligado, mesmo com a
+`2.3.0` já mergeada na `main`.
+
+Roteiro quando emperra:
+
+1. `/plugin marketplace update victor-bootstrap` — refaz o `git pull` do catálogo.
+2. `/plugin update bootstrap-agent-architecture@victor-bootstrap`.
+3. Se ainda mostrar a versão antiga, remova e adicione de novo:
+   `/plugin marketplace remove victor-bootstrap` e depois
+   `/plugin marketplace add Senavictors/bootstrap-agent-architecture-plugin`.
+4. Reinicie o Claude Desktop (a lista de plugins é lida na inicialização) e rode
+   `/reload-plugins` na sessão nova.
+
+Duas regras que este repositório segue para não criar esse problema do lado do
+autor, e que valem para qualquer plugin seu:
+
+- **`version` mora em um lugar só** — `plugin/.claude-plugin/plugin.json`. Se a
+  entrada do marketplace também declarasse `version`, o `plugin.json` ganharia
+  sem aviso e a outra ficaria mentindo silenciosamente.
+- **Toda mudança publicada sobe o `version`.** Com `version` fixo, o Claude Code
+  considera a cópia em cache válida e nem baixa os arquivos novos.
 
 ### ✅ Escopo desta entrega
 
@@ -117,6 +153,7 @@ The plugin helps you bootstrap and maintain an AI agent architecture (Claude Cod
 bootstrap-agent-architecture-plugin/
 ├── .claude-plugin/
 │   └── marketplace.json        # marketplace catalog, points to ./plugin
+├── CHANGELOG.md                 # version history
 ├── README.md                    # this file
 └── plugin/
     ├── .claude-plugin/
@@ -184,14 +221,49 @@ See `plugin/README.md` for the full breakdown of each phase and known limitation
 
 ### 🔄 Updating later
 
-Through the UI: go back to **Settings → Plugins**, update the marketplace, and reinstall/update the plugin whenever a new version is published.
-
-Through the terminal:
+From the terminal, in this order — the first command fixes 90% of cases:
 
 ```bash
 /plugin marketplace update victor-bootstrap
 /plugin update bootstrap-agent-architecture@victor-bootstrap
 ```
+
+Through the UI: **Settings → Plugins → Browse** → refresh (sync) the
+`victor-bootstrap` marketplace, and only then go back to the plugin's page.
+
+#### 🩺 "I pushed the new version to GitHub and the *Update* button is still greyed out"
+
+That's client-side caching, not a repository problem. Claude Code keeps **two**
+local copies:
+
+| What | Where | What refreshes it |
+|---|---|---|
+| Marketplace clone (the catalog) | `~/.claude/plugins/marketplaces/victor-bootstrap/` | `/plugin marketplace update victor-bootstrap` |
+| Installed plugin copy | `~/.claude/plugins/cache/victor-bootstrap/bootstrap-agent-architecture/<version>/` | `/plugin update bootstrap-agent-architecture@victor-bootstrap` |
+
+The **Update** button compares the installed version against the version in the
+**catalog clone** — never directly against GitHub. While that clone still says
+`2.2.0`, there is no update to offer and the button stays disabled, even though
+`2.3.0` is already merged into `main`.
+
+When it's stuck:
+
+1. `/plugin marketplace update victor-bootstrap` — re-pulls the catalog.
+2. `/plugin update bootstrap-agent-architecture@victor-bootstrap`.
+3. Still on the old version? Remove and re-add:
+   `/plugin marketplace remove victor-bootstrap`, then
+   `/plugin marketplace add Senavictors/bootstrap-agent-architecture-plugin`.
+4. Restart Claude Desktop (the plugin list is read at startup) and run
+   `/reload-plugins` in the new session.
+
+Two rules this repository follows so the author never causes this, and that hold
+for any plugin you publish:
+
+- **`version` lives in exactly one place** — `plugin/.claude-plugin/plugin.json`.
+  If the marketplace entry also declared `version`, `plugin.json` would win
+  silently and the other one would quietly lie.
+- **Every published change bumps `version`.** With a frozen `version`, Claude
+  Code treats the cached copy as current and never downloads the new files.
 
 ### ✅ Scope of this release
 

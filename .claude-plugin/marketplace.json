@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "victor-bootstrap",
   "owner": {
     "name": "Victor Sena"
@@ -8,7 +9,7 @@
     {
       "name": "bootstrap-agent-architecture",
       "source": "./plugin",
-      "description": "Orquestrador de arquitetura de agentes de IA (Claude Code/Cursor/Codex) — v2.3.0, Fases 1 a 4 + documentação viva: bootstrap-init, bootstrap-add-role, bootstrap-audit, bootstrap-plan, bootstrap-handoff, bootstrap-complete, bootstrap-quarantine, bootstrap-install-hook."
+      "description": "Orquestrador de arquitetura de agentes de IA (Claude Code/Cursor/Codex) — Fases 1 a 4 + documentação viva: bootstrap-init, bootstrap-add-role, bootstrap-audit, bootstrap-plan, bootstrap-handoff, bootstrap-complete, bootstrap-quarantine, bootstrap-install-hook."
     }
   ]
 }
