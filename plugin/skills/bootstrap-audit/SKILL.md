@@ -37,7 +37,9 @@ Rode uma varredura de padrões comuns de segredo nos arquivos que esta arquitetu
 - `.agents/handoffs/*.md`
 - `docs/architecture/deployment.md` (onde variáveis de ambiente costumam ser documentadas — fácil de colar um valor real por engano)
 
-Padrões mínimos a checar via grep/regex: `AKIA[0-9A-Z]{16}` (chave AWS), `-----BEGIN[A-Z ]*PRIVATE KEY-----`, sequências que pareçam token/senha atribuídas diretamente (`(api[_-]?key|secret|token|password)\s*[:=]\s*['"][^'"]{12,}['"]`), e qualquer linha copiada de um `.env` real (valor não vazio ao lado de uma variável que também aparece em `.env.example` como vazia).
+Padrões mínimos a checar via grep/regex: `AKIA[0-9A-Z]{16}` (chave AWS), `-----BEGIN[A-Z ]*PRIVATE KEY-----`, sequências que pareçam token/senha atribuídas diretamente (`(api[_-]?key|secret|token|password)[[:space:]]*[:=][[:space:]]*['"][^'"]{12,}['"]`), e qualquer linha copiada de um `.env` real (valor não vazio ao lado de uma variável que também aparece em `.env.example` como vazia).
+
+Use `[[:space:]]`, **não** `\s`: `\s` é extensão do GNU grep e o grep BSD (o padrão do macOS) o trata como um `s` literal — o padrão então deixaria de casar justamente `token = "valor"` com espaços em volta do `=`, falhando em silêncio. Pelo mesmo motivo, ao varrer arquivos com nome contendo espaço ou acento, cite o caminho entre aspas e nunca monte a lista com `for f in $(...)`.
 
 Se algo for encontrado:
 - Reporte como **alerta crítico**, citando arquivo e linha (sem repetir o segredo inteiro no relatório).

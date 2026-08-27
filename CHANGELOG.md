@@ -8,6 +8,25 @@ nunca divergirem).
 O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o
 versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 
+## [2.3.1] — 2026-08-27
+
+### Corrigido
+
+- **Guardrail anti-vazamento deixava passar segredo em arquivo com espaço ou
+  acento no nome.** O loop usava `for f in $STAGED`, que quebra o nome em
+  pedaços no espaço ("Minhas Notas.md" → "Minhas" + "Notas.md"), e o Git
+  devolve nomes não-ASCII escapados por padrão
+  (`"configura\303\247\303\243o.yml"`). Nos dois casos `[ -f "$f" ]` falhava
+  e o arquivo era **silenciosamente ignorado** — o hook dizia OK e o commit
+  passava com o segredo. Agora usa `git -c core.quotePath=false` e
+  `while IFS= read -r`. Testado com nome com espaço, com acento, e pasta com
+  espaço no caminho.
+- **`bootstrap-audit`: regex sugerido não funcionava no macOS.** A Checagem 3
+  propunha `\s` para espaço em branco, que é extensão do GNU grep — o grep BSD
+  do macOS trata como `s` literal, e o padrão parava de casar
+  `token = "valor"` (com espaços em volta do `=`), falhando em silêncio.
+  Trocado por `[[:space:]]`, que é POSIX e funciona nos dois greps.
+
 ## [2.3.0] — 2026-08-25
 
 ### Adicionado
@@ -42,5 +61,6 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 - Licença MIT.
 - README bilíngue (PT/EN) com instalação pela interface do Claude Desktop.
 
+[2.3.1]: https://github.com/Senavictors/bootstrap-agent-architecture-plugin/releases/tag/v2.3.1
 [2.3.0]: https://github.com/Senavictors/bootstrap-agent-architecture-plugin/releases/tag/v2.3.0
 [2.2.0]: https://github.com/Senavictors/bootstrap-agent-architecture-plugin/releases/tag/v2.2.0
